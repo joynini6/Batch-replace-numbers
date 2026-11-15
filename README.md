@@ -1,8 +1,8 @@
 [Windows-批量替换车牌.md](https://github.com/user-attachments/files/34871371/Windows-.md)
-# Batch-replace-numbers
+Batch-replace-numbers
 这个skill可以一键的替换车牌号等一连串图片里的数据，你只需要准备好一个记事本里面存入数据，脚本运行后它会让你选要替换数据范围的四个角，选定之后它会一键替换，仅需几秒。
 This tool allows you to replace data—such as license plate numbers—across a series of images with a single click. You simply need to prepare a text file containing the data; once the script is running, it will prompt you to select the four corners defining the area where the data should be replaced. After you’ve made your selection, the replacement is performed instantly—taking only a few seconds.
-## 一、这套方法能做到什么
+一、这套方法能做到什么
 
 - 同一张照片，批量替换不同车牌号码。
 - 只修改你框选的车牌区域，输出 PNG，区域外像素保持不变。
@@ -10,14 +10,14 @@ This tool allows you to replace data—such as license plate numbers—across a 
 - 第一次点选四个角，后续可以复用位置。
 - 图片和号码都在本机处理，不需要上传。
 
-**效果说明：**这是一版适合当前黄底黑字车牌的基础工具。它会自动清除旧文字、尽量保留底色和光影，但复杂污渍、螺丝附近可能留下痕迹。默认使用 Windows 黑体，并非原车牌专用字体；先检查两张样图，满意后再批量导出。
+效果说明：这是一版适合当前黄底黑字车牌的基础工具。它会自动清除旧文字、尽量保留底色和光影，但复杂污渍、螺丝附近可能留下痕迹。默认使用 Windows 黑体，并非原车牌专用字体；先检查两张样图，满意后再批量导出。
 
-如果你要求图片其他部分与最初照片一致，请使用**最初未经过 AI 修改的原图**作为底图。
+如果你要求图片其他部分与最初照片一致，请使用 最初未经过 AI 修改的原图 作为底图。
 
-## 二、安装一次运行环境
+ 二、安装一次运行环境
 
 1. 从 [Python 官网](https://www.python.org/downloads/windows/) 安装 Windows 版 Python，推荐 3.12 或 3.13。
-2. 安装时勾选 **Add python.exe to PATH**。
+2. 安装时勾选 Add python.exe to PATH。
 3. 按 `Win + R`，输入 `cmd`，回车。
 4. 执行：
 
@@ -27,7 +27,7 @@ py -m pip install pillow opencv-python numpy
 
 如果提示找不到 `py`，可以把后面的命令中的 `py` 改为 `python` 再试。
 
-## 三、准备号码文件
+ 三、准备号码文件
 
 桌面新建一个文件夹，例如 `批量换车牌`，放入原图。
 
@@ -39,15 +39,15 @@ py -m pip install pillow opencv-python numpy
 沪FS9310
 ```
 
-如果号码在 Excel 中，直接复制整列，粘贴到记事本即可。保存编码选择 **UTF-8**。
+如果号码在 Excel 中，直接复制整列，粘贴到记事本即可。保存编码选择 UTF-8。
 
-这版脚本接受与当前车牌相同的格式：**1个汉字＋1个字母＋5个字母或数字**。
+这版脚本接受与当前车牌相同的格式：1个汉字＋1个字母＋5个字母或数字。
 
-## 四、保存脚本
+ 四、保存脚本
 
 打开记事本，把下面代码全部复制进去。
 
-保存到同一文件夹，文件名为 `batch_plate.py`；“保存类型”选择 **所有文件**，避免保存成 `.py.txt`。
+保存到同一文件夹，文件名为 `batch_plate.py`；“保存类型”选择 所有文件，避免保存成 `.py.txt`。
 
 ```python
 import json
@@ -289,7 +289,7 @@ if __name__ == "__main__":
             pass
 ```
 
-## 五、开始批量生成
+ 五、开始批量生成
 
 1. 打开存放脚本的文件夹。
 2. 点击资源管理器顶部的**地址栏**，输入 `cmd`，回车。
@@ -305,4 +305,4 @@ py batch_plate.py
 
 图片保存在原图旁边的 `原图文件名_换牌结果` 文件夹中。
 
-**建议首次只放两个号码试跑。**重点查看旧文字有没有残留、字体是否满意、四边是否贴合；确认后，把完整200个号码放进 TXT，重新运行并选择复用车牌位置即可。
+建议首次只放两个号码试跑。重点查看旧文字有没有残留、字体是否满意、四边是否贴合；确认后，把完整200个号码放进 TXT，重新运行并选择复用车牌位置即可。
